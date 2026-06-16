@@ -1,0 +1,9 @@
+version: 2
+sources:
+  - name: raw
+    database: CUSTOMER_DB
+    schema: CUSTOMER_HISTORY
+    tables:
+      - name: raw_day1
+      - name: raw_day2
+      - name: raw_day3
