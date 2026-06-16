@@ -57,3 +57,5 @@ valid_to
 is_current
 
 Tested customer_id(not_null) and valid_from(not_null)
+
+output folder consists of output images do check out
