@@ -12,12 +12,12 @@ RAW_DAY3
     ↓
 raw_customers
     ↓
-customer_stg
+customer_stg --> test(schema.yml)
     ↓
 int_customer_changes
     ↓
-customer_current
-customer_history
+customer_current --> test(schema.yml)
+customer_history --> test(schema.yml)
 
 Models:
 
@@ -34,6 +34,8 @@ Converting loaded_date to date
 Converting account_balance to numeric
 Standardizing region and status
 
+tested customer_id(unique, not null) and loaded_date(not null)
+
 3. intermediate/int_customer_changes
 
 Identifies customer records where one or more attributes changed compared to the previous snapshot using LAG().
@@ -43,6 +45,8 @@ Identifies customer records where one or more attributes changed compared to the
 Returns one row per customer representing the latest known state.
 ROW_NUMBER() was used to select the most recent record for each customer.
 
+Tested customer_id(not null, unique)
+
 5. marts/customer_history
 
 Maintains the complete history of customer changes.
@@ -51,3 +55,5 @@ LEAD() was used to generate:
 valid_from
 valid_to
 is_current
+
+Tested customer_id(not_null) and valid_from(not_null)
