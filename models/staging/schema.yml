@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: customer_stg
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+      - name: loaded_date
+        tests:
+          - not_null
+
+          

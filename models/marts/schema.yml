@@ -1,0 +1,16 @@
+version: 2
+models:
+  - name: customer_current
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+          - unique
+  - name: customer_history
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+      - name: valid_from
+        tests:
+          - not_null
