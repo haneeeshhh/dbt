@@ -19,12 +19,21 @@ int_customer_changes
 customer_current --> test(schema.yml)
 customer_history --> test(schema.yml)
 
+project setup:
+Download the raw CSV files from the folder csv_files
+day1.csv
+day2.csv
+day3.csv
+
+Open snowflake and create warehouse(customer_hw), database(customer_db), schema(customer_history), stage. upload the csv files into the snowflake stage.
+Now create 3 tables with the name raw_day1, raw_day2, raw_day3
+In dbt, create connection with snowflake and load the tables 
+
 How to RUN DBT models:
 
 "dbt run" to run the dbt models
-"dbt test" to run the dbt test
+"dbt test" to test the model
 "dbt build" to run both models and tests
-
 
 Models:
 
@@ -60,12 +69,12 @@ loaded_date    row_number()
 every latest record gets row number 1
 so we can extract the latest record by where row_number() = 1 
 
+
 Handling Missing Customer (1005):
 Customer 1005 was missing from the Day 3
 
 Took the MAX(loaded_date) as the latest date and performed a case operation (if loaded_date < latest_date) then missing. which means the record is not available on the day 3. so i marked as missing else present. (models/marts/customer_current.sql)
 
-Tested customer_id(not null, unique)
 
 5. marts/customer_history
 
@@ -75,13 +84,39 @@ Lag() and LEAD() was used to generate:
 first used lag() to get loaded date for the changes in the history(valid from)
 and used lead() to get the valid to
 
-
-Tested customer_id(not_null) and valid_from(not_null)
- 
+Also added the new column where it shows whether the person is 
 
 Present – Customer exists in the latest data
 Missing – Customer is absent from the latest data
 
+
 The folder Snowflake_sql contains the sql codes that is used to create database, schemas, tables etc.
+
+dbt Tests:
+
+customer_stg:
+customer_id not null
+Ensures every record has a valid customer identifier.
+loaded_date not null
+Ensures every record belongs to a valid snapshot date.
+status accepted values
+Restricts status values to:
+  Active
+  Inactive
+This helps detect unexpected source values.
+customer_current
+customer_id unique
+Ensures only one current record exists per customer.
+customer_id not null
+Ensures all current customers have valid identifiers.
+customer_history
+customer_id not null
+Ensures all historical records belong to a customer.
+valid_from not null
+Ensures every history version has a start date.
+One current version per customer (custom test)
+Verifies that a customer cannot have more than one record with is_current = TRUE.
+No duplicate history versions (custom test)
+Verifies that the same customer version is not stored multiple times for the same valid_from date.
 
 output folder consists of output images do check out
