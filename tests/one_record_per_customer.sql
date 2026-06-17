@@ -1,0 +1,6 @@
+SELECT
+    CUSTOMER_ID
+FROM {{ ref('customer_history') }}
+WHERE IS_CURRENT = TRUE
+GROUP BY CUSTOMER_ID
+HAVING COUNT(*) > 1

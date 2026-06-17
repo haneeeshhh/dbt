@@ -9,5 +9,10 @@ models:
       - name: loaded_date
         tests:
           - not_null
-
-          
+      - name: STATUS
+        tests:
+          - accepted_values: 
+              arguments:
+                values:
+                  - Inactive
+                  - Active
