@@ -25,7 +25,8 @@ day1.csv
 day2.csv
 day3.csv
 
-Open snowflake and create warehouse(customer_hw), database(customer_db), schema(customer_history), stage. upload the csv files into the snowflake stage.
+Open snowflake and create warehouse(customer_hw), database(customer_db), schema(customer_history), stage. upload the csv files into the snowflake stage. or use the sql file provided but load the csv files in the customer_history/stages.
+
 Now create 3 tables with the name raw_day1, raw_day2, raw_day3
 In dbt, create connection with snowflake and load the tables 
 
