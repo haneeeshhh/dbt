@@ -82,4 +82,6 @@ Tested customer_id(not_null) and valid_from(not_null)
 Present – Customer exists in the latest data
 Missing – Customer is absent from the latest data
 
+The folder Snowflake_sql contains the sql codes that is used to create database, schemas, tables etc.
+
 output folder consists of output images do check out
