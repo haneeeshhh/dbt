@@ -16,3 +16,10 @@ SELECT
     *,
     'DAY3' AS source_file
 FROM {{ source('raw', 'raw_day3')}}
+
+UNION ALL
+
+SELECT
+    *,
+    'DAY4' AS source_file
+FROM {{ source('raw', 'raw_day4')}}
