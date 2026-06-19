@@ -9,6 +9,7 @@ The pipeline raw data, standardizes data, creates a current customer view, track
 RAW_DAY1
 RAW_DAY2
 RAW_DAY3
+RAW_DAY4
     ↓
 raw_customers
     ↓
@@ -24,10 +25,11 @@ Download the raw CSV files from the folder csv_files
 day1.csv
 day2.csv
 day3.csv
+day4.csv
 
-Open snowflake and create warehouse(customer_hw), database(customer_db), schema(customer_history), stage. upload the csv files into the snowflake stage. or use the sql file provided but load the csv files in the customer_history/stages.
+Open snowflake and create warehouse(customer_hw), database(customer_db), schema(customer_history), stage. upload the csv files into the snowflake stage. or use the sql files provided but load the csv files in the customer_history/stages.
 
-Now create 3 tables with the name raw_day1, raw_day2, raw_day3
+Now create 4 tables with the name raw_day1, raw_day2, raw_day3, raw_day4
 In dbt, create connection with snowflake and load the tables 
 
 How to RUN DBT models:
@@ -40,7 +42,7 @@ Models:
 
 1. raw/raw_customers
 
-Combines all three daily snapshots using UNION ALL to preserve historical records.
+Combines all four daily snapshots using UNION ALL to preserve historical records.
 
 2. staging/customer_stg
 
@@ -76,6 +78,7 @@ Customer 1005 was missing from the Day 3
 
 Took the MAX(loaded_date) as the latest date and performed a case operation (if loaded_date < latest_date) then missing. which means the record is not available on the day 3. so i marked as missing else present. (models/marts/customer_current.sql)
 
+In day 4 the missing customer data is again showed.. so it got marked present automatically in the current_state
 
 5. marts/customer_history
 
