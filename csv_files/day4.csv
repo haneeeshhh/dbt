@@ -1,0 +1,14 @@
+customer_id, customer_name, region, status, account_balance, loaded_date
+1001, Aarav Shah, North, Active, 150000.50, 6/4/2026
+1002, Diya Mehta, South, Active, 98250, 6/4/2026
+1003, Kabir Rao, West, Active, 225500.25, 6/4/2026
+1004, Ananya Iyer, East, Inactive, 45000, 6/4/2026
+1005, Vivaan Nair, North, Active, 76000.25, 6/4/2026
+1006, Ishita Das, West, Active, 134500, 6/4/2026
+1007, Rohan Kapoor, West, Inactive, 62000, 6/4/2026
+1008, Meera Menon, East, Active, 167890.4, 6/4/2026
+1009, Arjun Verma, North, Active, 92000, 6/4/2026
+1010, Nisha Pillai, South, Active, 118300.1, 6/4/2026
+1011, Saanvi Reddy, East, Active, 118300.10, 6/4/2026
+1012, Aditya Kulkarni, Central, Active, 88000.9, 6/4/2026
+1013, Karan Nair, North, Active, 54000.50, 6/4/2026
