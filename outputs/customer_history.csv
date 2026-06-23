@@ -1,0 +1,23 @@
+CUSTOMER_ID,CUSTOMER_NAME,REGION,STATUS,ACCOUNT_BALANCE,CUSTOMER_STATE,VALID_FROM,VALID_TO,IS_CURRENT
+1001,Aarav Shah,North,Active,125000.50,Present,2026-06-01,2026-06-04,FALSE
+1001,Aarav Shah,North,Active,150000.50,Present,2026-06-04,,TRUE
+1002,Diya Mehta,South,Active,98250.00,Present,2026-06-01,,TRUE
+1003,Kabir Rao,West,Active,210450.75,Present,2026-06-01,2026-06-02,FALSE
+1003,Kabir Rao,West,Active,215900.75,Present,2026-06-02,2026-06-04,FALSE
+1003,Kabir Rao,West,Active,225500.25,Present,2026-06-04,,TRUE
+1004,Ananya Iyer,East,Inactive,45000.00,Present,2026-06-01,,TRUE
+1005,Vivaan Nair,North,Active,76000.25,Present,2026-06-01,2026-06-03,FALSE
+1005,Vivaan Nair,North,Active,76000.25,Missing,2026-06-03,,TRUE
+1006,Ishita Das,South,Active,134500.00,Present,2026-06-01,2026-06-02,FALSE
+1006,Ishita Das,West,Active,134500.00,Present,2026-06-02,,TRUE
+1007,Rohan Kapoor,West,Inactive,58000.00,Present,2026-06-01,2026-06-03,FALSE
+1007,Rohan Kapoor,West,Active,62000.00,Present,2026-06-03,2026-06-04,FALSE
+1007,Rohan Kapoor,West,Inactive,62000.00,Present,2026-06-04,,TRUE
+1008,Meera Menon,East,Active,167890.40,Present,2026-06-01,,TRUE
+1009,Arjun Verma,North,Active,92000.00,Present,2026-06-01,,TRUE
+1010,Nisha Pillai,South,Active,118300.10,Present,2026-06-01,,TRUE
+1011,Saanvi Reddy,East,Active,64000.00,Present,2026-06-02,2026-06-04,FALSE
+1011,Saanvi Reddy,East,Active,118300.10,Present,2026-06-04,,TRUE
+1012,Aditya Kulkarni,West,Active,88000.90,Present,2026-06-02,2026-06-04,FALSE
+1012,Aditya Kulkarni,Central,Active,88000.90,Present,2026-06-04,,TRUE
+1013,Karan Nair,North,Active,54000.50,Present,2026-06-04,,TRUE
