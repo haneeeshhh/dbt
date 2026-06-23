@@ -33,7 +33,7 @@ SELECT
     loaded_date
 FROM customer_history
 WHERE prev_name IS NULL
-    or Customer_name <> prev_name
-    or region <> prev_region
-    or status <> prev_status
-    or account_balance <> prev_account_balance
+    or Customer_name IS DISTINCT FROM prev_name
+    or region IS DISTINCT FROM prev_region
+    or status IS DISTINCT FROM prev_status
+    or account_balance IS DISTINCT FROM prev_account_balance
