@@ -16,6 +16,7 @@ raw_customers
 customer_stg --> test(schema.yml)
     ↓
 int_customer_changes
+int_missing_customers
     ↓
 customer_current --> test(schema.yml)
 customer_history --> test(schema.yml)
@@ -40,6 +41,26 @@ How to RUN DBT models:
 
 Models:
 
+models/
+├── staging/
+│   └── customer_stg.sql
+│
+├── intermediate/
+│   ├── int_customer_changes.sql
+│   └── int_missing_events.sql
+│
+├── marts/
+│   ├── customer_current.sql
+│   └── customer_history.sql
+│
+├── tests/
+│   ├── duplicate_current_records.sql
+│   └── unique_history_versions.sql
+│
+└── Raw/
+    └── Customer_raw.sql
+
+
 1. raw/raw_customers
 
 Combines all four daily snapshots using UNION ALL to preserve historical records.
@@ -59,7 +80,11 @@ tested customer_id(unique, not null) and loaded_date(not null)
 
 Identifies customer records where one or more attributes changed compared to the previous snapshot using LAG().
 
-4. marts/customer_current
+4. intermediate/int_missing_events.sql
+
+Detects customers missing in the next daily snapshot.
+
+5. marts/customer_current
 
 Returns one row per customer representing the latest known state.
 ROW_NUMBER() was used to select the most recent record for each customer. Basically assigned ROW_NUMBER() based on the order by loaded_date. For instance,
@@ -80,7 +105,7 @@ Took the MAX(loaded_date) as the latest date and performed a case operation (if 
 
 In day 4 the missing customer data is again showed.. so it got marked present automatically in the current_state
 
-5. marts/customer_history
+6. marts/customer_history
 
 Maintains the complete history of customer changes.
 Lag() and LEAD() was used to generate:
@@ -92,9 +117,6 @@ Also added the new column where it shows whether the person is
 
 Present – Customer exists in the latest data
 Missing – Customer is absent from the latest data
-
-
-The folder Snowflake_sql contains the sql codes that is used to create database, schemas, tables etc.
 
 dbt Tests:
 
@@ -123,4 +145,7 @@ Verifies that a customer cannot have more than one record with is_current = TRUE
 No duplicate history versions (custom test)
 Verifies that the same customer version is not stored multiple times for the same valid_from date.
 
-output folder consists of output images do check out
+
+The folder Snowflake_sql, contains the sql codes that is used to create database, schemas, tables etc.
+
+output folder consists of output csv files do check out.
